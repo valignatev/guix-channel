@@ -1,4 +1,4 @@
-(define-module (emacs-master)
+(define-module (vign packages emacs-master)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages web)
   #:use-module (guix git)
