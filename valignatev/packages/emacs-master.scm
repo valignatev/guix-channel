@@ -1,4 +1,4 @@
-(define-module (vign packages emacs-master)
+(define-module (valignatev packages emacs-master)
   #:use-module (gnu packages)
   #:use-module (gnu packages autotools)
   #:use-module (gnu packages emacs)
@@ -89,5 +89,3 @@
           ("python" ,python-3)
           ("rc" ,rc)
           ,@(package-native-inputs emacs))))))
-
-emacs-git
