@@ -6,33 +6,9 @@
   #:use-module (gnu packages python)
   #:use-module (gnu packages shells)
   #:use-module (gnu packages web)
-  #:use-module (guix git)
   #:use-module (guix git-download)
   #:use-module (guix packages)
   #:use-module (guix utils))
-
-(define-public emacs-master
-  (package (inherit emacs)
-    (name "emacs-master")
-    (version "master")
-    (source (git-checkout (url "https://git.savannah.gnu.org/git/emacs.git")
-                          (recursive? #t)))
-    (arguments
-      (substitute-keyword-arguments (package-arguments emacs)
-        ((#:phases phases)
-         `(modify-phases ,phases
-            (add-before 'reset-gzip-timestamps 'make-compressed-files-writable
-              (lambda _
-                (for-each make-file-writable
-                          (find-files %output ".*\\.t?gz$"))
-                #t))))))
-    (inputs
-      `(("jansson" ,jansson)
-        ("autoconf" ,autoconf)
-        ("perl" ,perl)
-        ("python" ,python)
-        ("rc" ,rc)
-        ,@(package-inputs emacs)))))
 
 (define-public emacs-git
   (let ((commit "d57bb0c323c326518d9cc974dc794f9e23a51917")
