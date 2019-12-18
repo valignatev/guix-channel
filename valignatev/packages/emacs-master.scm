@@ -15,14 +15,14 @@
         (revision "0"))
     (package (inherit emacs)
       (name "emacs-git")
-      (version (git-version "27" revision commit))
+      (version "27.0.50")
       (source (origin
                 (method git-fetch)
                 (uri (git-reference
                        (url "https://git.savannah.gnu.org/git/emacs.git")
                        (commit commit)
                        (recursive? #t)))
-                (file-name (git-file-name name version))
+                (file-name (git-file-name name commit))
                 (patches (search-patches
                            "emacs-fix-scheme-indent-function.patch"
                            "emacs-source-date-epoch.patch"))
@@ -89,3 +89,5 @@
           ("python" ,python-3)
           ("rc" ,rc)
           ,@(package-native-inputs emacs))))))
+
+emacs-git
