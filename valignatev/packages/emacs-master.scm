@@ -89,5 +89,3 @@
           ("python" ,python-3)
           ("rc" ,rc)
           ,@(package-native-inputs emacs))))))
-
-emacs-git
